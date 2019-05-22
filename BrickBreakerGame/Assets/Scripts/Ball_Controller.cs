@@ -12,7 +12,7 @@ public class Ball_Controller : MonoBehaviour
 
 
     void Start() {
-        speed = 3;
+        speed = 6;
         onGround = true;
         transform.position = new Vector2 (0, -3.783198f); //On ground
         rb = GetComponent<Rigidbody2D>();
@@ -44,7 +44,11 @@ public class Ball_Controller : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
         else {
-            //bounce off
+            transform.right = Vector3.Reflect(transform.right, collision.contacts[0].normal);
         }
+    }
+
+    public void OnDrawGizmos() {
+        
     }
 }
